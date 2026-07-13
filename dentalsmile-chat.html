@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DentalSmile Clinic — Chat with us</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --brand-primary: #1789a3;
+        --brand-primary-dark: #115a6b;
+        --brand-secondary: #4fc3c9;
+        --brand-light: #eaf6f4;
+        --brand-dark: #0d2b32;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(13, 43, 50, 0.55) 0%,
+            rgba(13, 43, 50, 0.75) 100%
+          ),
+          url("https://i.imgur.com/JdA4LhY.jpeg") center / cover no-repeat fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 32px 16px;
+      }
+
+      .brand-header {
+        text-align: center;
+        color: #fff;
+        margin-bottom: 24px;
+      }
+
+      .brand-header h1 {
+        font-family: "Poppins", sans-serif;
+        font-size: clamp(24px, 4vw, 34px);
+        margin: 0 0 6px;
+        letter-spacing: -0.01em;
+      }
+
+      .brand-header p {
+        margin: 0;
+        font-size: 15px;
+        opacity: 0.85;
+      }
+
+      #n8n-chat {
+        width: 100%;
+        max-width: 420px;
+      }
+
+      /* ---- n8n chat widget theming ---- */
+      :root {
+        --chat--color--primary: var(--brand-primary);
+        --chat--color--primary-shade-50: var(--brand-primary-dark);
+        --chat--color--secondary: var(--brand-secondary);
+        --chat--color-white: #ffffff;
+        --chat--color-light: var(--brand-light);
+        --chat--color-dark: var(--brand-dark);
+        --chat--border-radius: 0.9rem;
+        --chat--font-family: "Inter", sans-serif;
+        --chat--window--width: 100%;
+        --chat--window--height: 600px;
+      }
+
+      /* This is what wouldn't work inside n8n's own Custom CSS field —
+     here it's just a normal stylesheet, so it works. */
+      .chat-layout .chat-body {
+        background-image: url("https://i.imgur.com/JdA4LhY.jpeg");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .chat-message {
+        background-color: rgba(255, 255, 255, 0.94) !important;
+        backdrop-filter: blur(2px);
+      }
+
+      .brand-footer {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 12px;
+        margin-top: 20px;
+      }
+
+      .chat-message-from-user {
+        background-color: rgba(255, 255, 255, 0.92) !important;
+        color: #12303a !important;
+      }
+
+      .chat-message-from-user * {
+        color: #12303a !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="brand-header">
+      <h1>DentalSmile Clinic</h1>
+      <p>
+        Ask us about hours, booking, pricing, or anything else — we're here to
+        help.
+      </p>
+    </div>
+
+    <div id="n8n-chat"></div>
+
+    <div class="brand-footer">DentalSmile Clinic · Manila</div>
+
+    <script type="module">
+      import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
+
+      createChat({
+        webhookUrl:
+          "https://annotate-reactive-shell.ngrok-free.dev/webhook/65c0c980-7b92-4c9a-bdc6-a9b6d9131c13/chat", // <-- paste your ngrok + /webhook/.../chat URL here
+        target: "#n8n-chat",
+        mode: "fullscreen",
+        showWelcomeScreen: false,
+        initialMessages: [
+          "Hi! 👋 I'm DentalSmile Clinic's virtual assistant.",
+          "Ask me about hours, booking, pricing, payment options, or anything else!",
+        ],
+      });
+    </script>
+  </body>
+</html>
